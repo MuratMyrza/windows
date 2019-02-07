@@ -1,0 +1,54 @@
+<html>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+
+<div>
+    <a href="{% url 'blog:add' %}">Добавить пост</a>
+    <a href="{% url 'blog:add_theme' %}">Добавить тему</a>
+</div>
+
+<hr>
+
+<form action="{% url 'blog:search-result' %}">
+
+    <select name="search_option" id="">
+        <option value="">all</option>
+        <option value="exact">exact(search exact string</option>
+        <option value="starts_with">starts with</option>
+        <option value="ends_with">ends with</option>
+    </select>
+
+    <input type="text" name="q" placeholder="Search string" value="{{ q }}">
+    <input type="checkbox" name="content" value="1">
+           search in content
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<div>
+
+    {% for post in posts %}
+        <div>
+            <h3>
+                <a href="/blog/post-{{ post.id }}/">{{ post.title }}</a>
+                <a href="/blog/theme-{{ post.theme.id }}/">{{ post.theme }}</a>
+            </h3>
+            <div>
+                <img src="{{ post.theme.image.url }}" alt="">
+            </div>
+            {#<p>#}
+             {#   {{ post.content }}#}
+           {# </p>#}
+            {#<div>{{ post.theme }}</div>#}
+     {#   </div>#}
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
+

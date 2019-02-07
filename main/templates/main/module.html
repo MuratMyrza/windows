@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {{ block.super }}
+    |
+    This is module header
+{% endblock %}
+
+
+{% block wrapper %}
+    +++++++++++++++++++++++++++++-
+    {% block content %}
+    {% endblock %}
+    +++++++++++++++++++++++++++++-
+{% endblock %}

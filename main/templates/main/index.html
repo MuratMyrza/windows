@@ -1,0 +1,17 @@
+hello world
+
+<ul>
+    {% for fruit in fruits %}
+        <li>
+            {% if forloop.first %}
+            <strong>{{ fruit  }}</strong>
+            {% else %}
+                {{ fruit  }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'main:index' %}">Index</a>
+
+{% url 'main:index' %}
